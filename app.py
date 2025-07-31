@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template_string
 from flask_cors import CORS
 import torch
 from model import TextGenModel
@@ -6,6 +6,16 @@ from utils import load_tokenizer
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/")
+def home():
+    with open("index.html", "r", encoding="utf-8") as f:
+        return f.read()
+
+@app.route("/script.js")
+def script():
+    with open("script.js", "r", encoding="utf-8") as f:
+        return f.read()
 
 tokenizer = load_tokenizer()
 model = TextGenModel(tokenizer.vocab_size())
