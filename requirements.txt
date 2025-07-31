@@ -1,0 +1,8 @@
+torch
+flask
+flask-cors
+sentencepiece
+torch
+flask
+flask-cors
+sentencepiece
